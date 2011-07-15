@@ -18,10 +18,10 @@ class ShopSettings(models.Model):
     homepage_title = models.CharField(max_length=200, blank=True, null=True)
     homepage_description = tinymce_models.HTMLField()
     homepage_meta_description = models.TextField(blank=True, null=True)
-    #product_page_description = tinymce_models.HTMLField(blank=True, null=True)
-    #show_prices = models.BooleanField(default=False)
-    main_homepage_image = models.ImageField(upload_to="images/", blank=True, null=True,
-        help_text="Should be exactly 700px wide")
+    product_page_description = tinymce_models.HTMLField(blank=True, null=True)
+    show_prices = models.BooleanField(default=False)
+    #main_homepage_image = models.ImageField(upload_to="images/", blank=True, null=True,
+    #    help_text="Should be exactly 700px wide")
     site_email = models.CharField(max_length=200, blank=True, null=True)
 
 

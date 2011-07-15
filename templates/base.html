@@ -58,7 +58,7 @@
 	
     {% block ga %}
     {% if ga_is_on %}
-		{{ shopsettings.ga_tracking_code }}
+		{{ shopsettings.ga_tracking_code|safe }}
     {% endif %}
     {% endblock %}
 </head>
