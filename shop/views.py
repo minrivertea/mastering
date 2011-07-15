@@ -115,7 +115,7 @@ def contact_us(request):
             )
             
             
-            url = request.META.get('HTTP_REFERER','/')
+            url = reverse('contact_us')
             request.session['MESSAGE'] = "1"
             return HttpResponseRedirect(url) 
     else:
