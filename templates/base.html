@@ -1,5 +1,6 @@
 {% load django_static %}
 {% load nav_selected %}
+{% load thumbnail %}
 
 {% block doctype %}<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html
@@ -57,19 +58,7 @@
 	
     {% block ga %}
     {% if ga_is_on %}
-    <script type="text/javascript">
-
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-21360323-1']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-
-</script>
+		{{ shopsettings.ga_tracking_code }}
     {% endif %}
     {% endblock %}
 </head>
@@ -89,7 +78,9 @@
 	<div id="header">
 	   	<div id="logo">
 	   		<a title="Mastering Outdoors" alt="the Mastering Outdoors logo" href="/">
-	   			<h1><span>Mastering Outdoors</span></h1>
+	   			{% thumbnail shopsettings.logo "300x140" crop="center" as im %}
+	   			<img src="{{ im.url }}"/>
+	   			{% endthumbnail %}
 	   		</a>
 	   	</div>
 	   	
@@ -107,14 +98,16 @@
 	   	        	<a class="{% nav_selected request '^/news/' %}" href="/news/" title="News" alt="">News</a>
 	   	        </li>
 	   	        <li>
-	   	        	<a class="{% nav_selected request '^/shipping/' %}" href="/shipping/" title="Shipping" alt="">Shipping</a>
+	   	        	<a class="{% nav_selected request '^/factory-tour/' %}" href="/factory-tour/" title="FAQs" alt="">FAQs</a>
 	   	        </li>
+	   	        
 	   	        <li>
 	   	        	<a class="{% nav_selected request '^/oem-expertise/' %}" href="/oem-expertise/" title="OEM Expertise" alt="">OEM expertise</a>
 	   	        </li>
 	   	        <li>
-	   	        	<a class="{% nav_selected request '^/factory-tour/' %}" href="/factory-tour/" title="Factory Tour" alt="">Factory tour</a>
+	   	        	<a class="{% nav_selected request '^/shipping/' %}" href="/shipping/" title="Shipping" alt="">Shipping</a>
 	   	        </li>
+	   	        
 	   	        <li>
 	   	        	<a class="{% nav_selected request '^/contact-us/' %}" href="/contact-us/" title="Contact Us" alt="">Contact us</a>
 	   	        </li>
@@ -128,6 +121,10 @@
 
 		<div id="left-nav">
 			{% include "shop/snippets/left-nav.html" %}
+			<img style="float: left;margin-left: 10px; margin-top: 20px;" src="{% staticfile '/images/asi-logo.jpg' %}">
+			
+			
+			
 		</div>
 		
 		<div id="centre-content">

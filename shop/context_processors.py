@@ -6,6 +6,10 @@ from mastering.shop.models import *
 def common(request):
     from mastering import settings
     context = {}
+    try:
+        context['shopsettings'] = get_object_or_404(ShopSettings, pk=1)
+    except:
+        pass
     context['ga_is_on'] = settings.GA_IS_ON
     return context
 

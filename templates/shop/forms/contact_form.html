@@ -76,41 +76,8 @@ div#centre-content div#message h3 {
 				<h3>Send us a message</h3>
 				<p>We respond to all messages within 24 hours.</p>
 
-				<form action="." method="post">
-					<p>	 
-						<input type="text" name="your_name" id="id_your_name" />
-						<label for="id_your_name">Your name *</label>
-					</p>
-					<p> 
-						<input type="text" name="your_email" id="id_your_email" />
-						<label for="id_your_email">Your email * </label>
-					</p>
-					
-					<p> 
-						<input type="text" name="phone_number" id="id_phone_number" />
-						<label for="id_phone_number">Your phone number</label>
-					</p>
-					
-					<p> 
-						<input type="text" name="country" id="id_country" />
-						<label for="id_country">Country</label>
-					</p>
-					
-					
-
-					<p>
-						<textarea id="id_your_message" rows="10" cols="40" name="your_message"></textarea>
-						<label for="id_your_message">Your message * </label> 
-					</p>
-
-
-					<p class="help-text">
-					<img src="{% staticfile '/images/lock.gif' %}"> We will never share, sell or spam your email address (<a target="_blank" title="Read our privacy policy (opens in a new window)" href="/privacy/">Privacy</a>)
-					</p>					
-					<input class="submit-button" value="Send message" type="submit">
-
-					
-				</form>
+				{% include "shop/snippets/contact_form.html" %}
+				
 			{% endif %}
 
 

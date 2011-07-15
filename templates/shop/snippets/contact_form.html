@@ -1,0 +1,29 @@
+{% load django_static %}
+
+<form action="{% url contact_us %}" method="post">
+
+		<label for="id_your_message">Your message * </label>
+		<textarea id="id_your_message" rows="10" cols="40" name="your_message">{% if product %}RE: {{ product.name }}{% endif %}
+		</textarea>
+
+		<label for="id_your_name">Your name *</label>
+		<input type="text" name="your_name" id="id_your_name" />
+		
+		<label for="id_your_email">Your email * </label>
+		<input type="text" name="your_email" id="id_your_email" />
+		
+		<label for="id_phone_number">Your phone number (optional)</label>
+		<input type="text" name="phone_number" id="id_phone_number" />
+		
+		<label for="id_country">Country (optional)</label>
+		<input type="text" name="country" id="id_country" />
+		
+	
+					
+		<p class="help-text">
+			We will never share, sell or spam your email address (<a target="_blank" title="Read our privacy policy (opens in a new window)" href="/privacy/">Privacy</a>)
+		</p>					
+		
+		<input class="submit-button" value="Send message" type="submit">
+
+</form>

@@ -30,6 +30,57 @@ div#product-images {
   width: 280px;	
 }
 
+form {
+  float: left;
+  background-color: #f1f1f1;
+  border-top: 3px dotted #e1e1e1;
+  border-bottom: 3px dotted #e1e1e1;
+  width: 600px;
+  padding: 20px 30px;	
+  margin-bottom: 30px;
+}
+
+form input {
+  width: 500px;
+  padding: 5px;
+  font-size: 15px;
+  margin-right: 20px;	
+}
+
+form textarea {
+  width: 500px;	
+  padding: 5px;
+  font-size: 15px;
+  margin-right: 20px;
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+form label {
+    float: left;
+    font-size: 12px;
+    font-weight: bold;
+    width: 500px;
+}
+
+div#centre-content p.help-text {
+    float: left;
+    font-size: 0.7em;
+    padding-left: 10px;
+    margin-top: 0px;
+}
+
+div#centre-content div#message {
+    background-color: #F1F1F1;
+    border: 1px solid #C1C1C1;
+    border-radius: 10px 10px 10px 10px;
+    padding: 0 20px;
+}
+
+div#centre-content div#message h3 {
+  color: #4D89BD;	
+}
+
+
 </style>
 {% endblock %}
 
@@ -103,6 +154,8 @@ div#product-images {
 	<p>{{ product.body_text|safe }}</p>
 	{% endif %}
 	
+	<h3>Contact us about this product</h3>
+	{% include "shop/snippets/contact_form.html" %}
 
 
 {% endblock %}

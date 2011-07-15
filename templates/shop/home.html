@@ -2,9 +2,9 @@
 {% load thumbnail %}
 {% load django_static %}
 
-{% block pagetitle %}Your manufacturer of sports equipment, textile and promotional products.{% endblock %}
+{% block pagetitle %}{{ shopsettings.homepage_title }}{% endblock %}
 
-{% block metadescription %}Manufacturer of promotional bags, tents, sport nets and textile products.{% endblock %}
+{% block metadescription %}{{ shopsettings.homepage_meta_description|safe }}{% endblock %}
 
 
 {% block extracss %}
@@ -39,7 +39,8 @@ span.grey {
 <img src="{% staticfile '/images/about-us.jpg' %}">
 </div>
 
-<p>Welcome to Mastering Outdoors!  We are a manufacturer of <strong>promotional bags, sport nets, sport equipment</strong> and <strong>garments</strong> located in Fuzhou, South China. Our staff is led by French, American, and Chinese engineers who design, test and produce <strong>quality products</strong> for international clients. Please contact us for free quote.</p><p><em>Thank you from the entire Mastering Outdoors team!</em></p>
+{{ shopsettings.homepage_description|safe }}
+
 
 <div id="reviews">
 {% for review in reviews %}

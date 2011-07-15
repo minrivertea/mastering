@@ -11,6 +11,7 @@ class NewsAdmin(admin.ModelAdmin):
     prepopulated_fields = {"slug": ("title",)}    
 
 
+admin.site.register(ShopSettings)
 admin.site.register(Product, ProductAdmin)
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(News, NewsAdmin)
