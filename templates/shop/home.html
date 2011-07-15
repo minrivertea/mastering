@@ -36,7 +36,9 @@ span.grey {
 
 
 <div id="feature">
-<img src="{% staticfile '/images/about-us.jpg' %}">
+{% thumbnail shopsettings.main_homepage_image "700" crop="center" as im %}
+<img src="{{ im.url }}">
+{% endthumbnail %}
 </div>
 
 {{ shopsettings.homepage_description|safe }}
