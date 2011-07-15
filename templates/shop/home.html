@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% load thumbnail %}
+{% load django_static %}
+
+{% block pagetitle %}Your manufacturer of sports equipment, textile and promotional products.{% endblock %}
+
+{% block metadescription %}Manufacturer of promotional bags, tents, sport nets and textile products.{% endblock %}
+
+
+{% block extracss %}
+<style type="text/css">
+div#feature {
+  width: 100%;
+  background-color: #e1e1e1;
+  height: 300px;
+  margin-bottom: 20px;	
+}
+
+div#centre-content div#reviews p {
+  float: left;
+  width: 100%;
+  font-size: 20px;	
+  border-top: 3px dotted #e1e1e1;
+  padding-top: 20px;
+}
+
+span.grey {
+  color: #666;	
+} 
+
+</style>
+{% endblock %}
+
+{% block content %}
+
+
+
+<div id="feature">
+<img src="{% staticfile '/images/about-us.jpg' %}">
+</div>
+
+<p>Welcome to Mastering Outdoors!  We are a manufacturer of <strong>promotional bags, sport nets, sport equipment</strong> and <strong>garments</strong> located in Fuzhou, South China. Our staff is led by French, American, and Chinese engineers who design, test and produce <strong>quality products</strong> for international clients. Please contact us for free quote.</p><p><em>Thank you from the entire Mastering Outdoors team!</em></p>
+
+<div id="reviews">
+{% for review in reviews %}
+<p><em>&ldquo;{{ review.short_text }}&rdquo;<br/><span class="grey">{{ review.name }}</span></em></p>
+{% endfor %}
+</div>
+
+<div class="product-list">
+	<ul class="product-list">
+	{% for product in products %}
+		<li>
+			<a title="Click to find out more about our {{ product.name }}" href="{% url product product.slug %}"><span class="link"></span></a>
+			{% thumbnail product.image "190x170" crop="center" as im %}
+				<img alt="a picture of {{ product.name }}" title="Click to find out more about {{ product.name }}" class="" src="{{ im.url }}"/>
+			{% endthumbnail %}
+			<h3><a href="{% url product product.slug %}">{{ product.name }}</a></h3>
+			{{ product.short_description|safe }}
+		</li>
+	{% empty %}
+	<p class="large">Sorry, there are no products available in this category right now!</p>
+	{% endfor %}
+	</ul>
+</div>
+
+
+
+{% endblock %}

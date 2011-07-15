@@ -1,0 +1,44 @@
+{% load nav_selected %}
+
+
+{% if product %}
+	<ul>
+	  {% for object in nav_objects %} 
+	  	<li>
+			<a class="{% ifequal object.slug product.get_category.parent %}selected{% endifequal %}{% if forloop.first %} first{% endif %}{% if forloop.last %} last{% endif %}" href="{% url category object.slug %}">{{ object.name }}</a>
+		  {% ifequal object.slug product.get_category.parent %}
+			{% if object.get_children %}
+			  <ul class="subnav">
+				{% for child in object.get_children %}
+				  <li><a class="{% nav_selected request child.slug %}" href="{% url sub_category object.slug child.slug %}">{{ child.name }}</a>
+				  </li>
+				{% endfor %}
+			  </ul>
+			{% endif %}
+		  {% endifequal %}
+		</li>
+	  {% endfor %}  
+	</ul>
+
+
+{% else %}
+
+	<ul>
+	  {% for object in nav_objects %} 
+	  	<li>
+			<a class="{% nav_selected request object.slug %}{% if forloop.first %} first{% endif %}{% if forloop.last %} last{% endif %}" href="{% url category object.slug %}">{{ object.name }}</a>
+		  {% if object.slug in request.path %}
+			{% if object.get_children %}
+			  <ul class="subnav">
+				{% for child in object.get_children %}
+				  <li><a class="{% nav_selected request child.slug %}" href="{% url sub_category object.slug child.slug %}">{{ child.name }}</a>
+				  </li>
+				{% endfor %}
+			  </ul>
+			{% endif %}
+		  {% endif %}
+		</li>
+	  {% endfor %}  
+	</ul>
+
+{% endif %}

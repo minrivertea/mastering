@@ -1,0 +1,119 @@
+{% extends "base.html" %}
+{% load thumbnail %}
+{% load django_static %}
+
+{% block metadescription %}{{ category.meta_description }}{% endblock %}
+
+{% block pagetitle %}{{ category.meta_title }}{% endblock %}
+
+{% block extracss %}
+<style type="text/css">
+
+div#images div.item {
+  position: relative;	
+  float: left;
+}
+
+div#images div.item:hover p.title a {
+  text-decoration: underline;
+}
+
+div#images div.item span.link {
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  position: absolute;	
+  top: 0;
+  left: 0;
+}
+
+div#images h4 {
+  color: #333;	
+  margin: 0;
+  font-size: 16px;
+}
+
+div#images div.image.tall img {
+  float: left;
+  margin-right: 10px;
+  border: 2px solid #e1e1e1;
+  padding: 2px;
+} 
+
+div#images div.image.tall p.title {
+  font-size: 13px;
+  font-weight: bold;
+  margin-bottom: 5px;
+  float: left;	
+}
+
+div#centre-content div#images div.image.tall p {
+  margin-top: 0;
+  padding-top: 0;
+  line-height: 1em;	
+  margin-bottom: 0;
+  color: #666;
+  font-size: 11px;
+  float: left;
+  width: 100px;
+} 
+
+span.black {
+  color: #000;	
+}
+
+</style>
+{% endblock %}
+
+{% block content %}
+
+<h2><span>Category &raquo;</span> {{ category.name }}</h2>
+
+<div id="images">
+		{% if category.hot_item %}
+	<div class="image tall">
+		
+
+		<h4>Most popular</h4>
+		<div class="item">
+		<a href="{{ product.get_absolute_url }}"><span class="link"></span></a>
+		{% thumbnail category.hot_item.image "70x55" crop="center" as im %}
+		<img alt="a picture of {{ category.hot_item.name }}" title="Click to find out more about {{ category.hot_item.name }}" class="" src="{{ im.url }}"/>
+		{% endthumbnail %}
+		<p class="title"><a href="">{{ category.hot_item.name }}</a></p>
+		<p>{{ category.hot_item.description|truncatewords:10|safe }}</p>
+		
+		</div>
+
+	</div>
+			{% endif %}
+	<div class="image">
+	<h4>What our customers say</h4>
+	{% for review in reviews %}
+	<p>&ldquo;<em>{{ review.short_text }}</em>&rdquo;<br/><span class="black">{{ review.name }}</span></p>
+	{% endfor %}
+	</div>
+</div>
+<p>{{ category.description|safe }}</p>
+
+<div class="product-list">
+	<ul class="product-list">
+	{% for product in products_list %}
+		<li>
+			<a title="Click to find out more about our {{ product.name }}" href="{% url product product.slug %}"><span class="link"></span></a>
+			{% thumbnail product.image "190x170" crop="center" as im %}
+				<img alt="a picture of {{ product.name }}" title="Click to find out more about {{ product.name }}" class="" src="{{ im.url }}"/>
+			{% endthumbnail %}
+			<h3><a href="{% url product product.slug %}">{{ product.name }}</a></h3>
+			{{ product.short_description|safe }}
+		</li>
+	{% empty %}
+	<p class="large">Sorry, there are no products available in this category right now!</p>
+	{% endfor %}
+	</ul>
+</div>	
+
+		
+
+
+{% endblock %}

@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+{% load django_static %}
+
+{% block extracss %}
+
+{{ form.media }}
+<style type="text/css">
+
+form {
+  float: left;
+  background-color: #f1f1f1;
+  border-top: 3px dotted #e1e1e1;
+  border-bottom: 3px dotted #e1e1e1;
+  width: 600px;
+  padding: 20px 30px;	
+  margin-bottom: 30px;
+}
+
+form input {
+  width: 300px;
+  padding: 5px;
+  font-size: 15px;
+  margin-right: 20px;	
+}
+
+form textarea {
+  width: 300px;	
+  padding: 5px;
+  font-size: 15px;
+  margin-right: 20px;
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+form label {
+  font-weight: bold;
+  font-size: 12px;	
+}
+
+div#centre-content p.help-text {
+    float: left;
+    font-size: 0.7em;
+    padding-left: 10px;
+    margin-top: 0px;
+}
+
+div#centre-content div#message {
+    background-color: #F1F1F1;
+    border: 1px solid #C1C1C1;
+    border-radius: 10px 10px 10px 10px;
+    padding: 0 20px;
+}
+
+div#centre-content div#message h3 {
+  color: #4D89BD;	
+}
+
+</style>
+{% endblock %}
+
+{% block metadescription %}{% endblock %}
+
+{% block pagetitle%}Create a bunch of products{% endblock %}
+
+
+
+{% block content %}
+    
+
+	<h2>Create a set of products</h2>
+		 	<p>Use this form to create a large number of similar products. These products will all be created using the same information you post below, but with a slightly different slug.</p>
+
+			{% if message %}
+				<div id="message">
+				<h3>Done</h3>
+				</div>
+			{% else %}
+			
+			{% if form.errors %}
+			{% for error in form.errors %}
+			  {{ error }}<br/>
+			{% endfor %}
+			{% endif %}
+
+				<form enctype="multipart/form-data" action="." method="post">
+					{{ form.as_p }}
+					<input class="submit-button" value="Create products" type="submit">
+
+					
+				</form>
+			{% endif %}
+
+
+    {% endblock %}

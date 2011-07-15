@@ -1,0 +1,117 @@
+{% extends "base.html" %}
+{% load django_static %}
+
+{% block extracss %}
+<style type="text/css">
+
+form {
+  float: left;
+  background-color: #f1f1f1;
+  border-top: 3px dotted #e1e1e1;
+  border-bottom: 3px dotted #e1e1e1;
+  width: 600px;
+  padding: 20px 30px;	
+  margin-bottom: 30px;
+}
+
+form input {
+  width: 300px;
+  padding: 5px;
+  font-size: 15px;
+  margin-right: 20px;	
+}
+
+form textarea {
+  width: 300px;	
+  padding: 5px;
+  font-size: 15px;
+  margin-right: 20px;
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+form label {
+  font-weight: bold;
+  font-size: 12px;	
+}
+
+div#centre-content p.help-text {
+    float: left;
+    font-size: 0.7em;
+    padding-left: 10px;
+    margin-top: 0px;
+}
+
+div#centre-content div#message {
+    background-color: #F1F1F1;
+    border: 1px solid #C1C1C1;
+    border-radius: 10px 10px 10px 10px;
+    padding: 0 20px;
+}
+
+div#centre-content div#message h3 {
+  color: #4D89BD;	
+}
+
+</style>
+{% endblock %}
+
+{% block metadescription %}Contact Mastering Outdoors - how you can get in touch with us.{% endblock %}
+
+{% block pagetitle%}Contact us{% endblock %}
+
+
+
+{% block content %}
+    
+
+	<h2>Contact Us</h2>
+		 	<p>Fill in your enquiry below, or send us an email at  <a href="mailto:sales@mastering-outdoors.com">sales@mastering-outdoors.com</a> to get in touch with our sales representatives.</p>
+
+			{% if message %}
+				<div id="message">
+				<h3>Thanks!</h3>
+				<p>Your message has been sent to us at Mastering Outdoors. We usually aim to respond within 24 hours to all enquiries.</p>
+				</div>
+			{% else %}
+				<h3>Send us a message</h3>
+				<p>We respond to all messages within 24 hours.</p>
+
+				<form action="." method="post">
+					<p>	 
+						<input type="text" name="your_name" id="id_your_name" />
+						<label for="id_your_name">Your name *</label>
+					</p>
+					<p> 
+						<input type="text" name="your_email" id="id_your_email" />
+						<label for="id_your_email">Your email * </label>
+					</p>
+					
+					<p> 
+						<input type="text" name="phone_number" id="id_phone_number" />
+						<label for="id_phone_number">Your phone number</label>
+					</p>
+					
+					<p> 
+						<input type="text" name="country" id="id_country" />
+						<label for="id_country">Country</label>
+					</p>
+					
+					
+
+					<p>
+						<textarea id="id_your_message" rows="10" cols="40" name="your_message"></textarea>
+						<label for="id_your_message">Your message * </label> 
+					</p>
+
+
+					<p class="help-text">
+					<img src="{% staticfile '/images/lock.gif' %}"> We will never share, sell or spam your email address (<a target="_blank" title="Read our privacy policy (opens in a new window)" href="/privacy/">Privacy</a>)
+					</p>					
+					<input class="submit-button" value="Send message" type="submit">
+
+					
+				</form>
+			{% endif %}
+
+
+    {% endblock %}

@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% load thumbnail %}
+{% load django_static %}
+
+{% block metadescription %}{{ category.meta_description }}{% endblock %}
+
+{% block pagetitle %}{{ category.meta_title }}{% endblock %}
+
+{% block extracss %}
+<style type="text/css">
+
+ul.latest-news {
+  padding-left: 0;
+  list-style-type: None;
+  padding-top: 5px;
+  border-top: 2px dotted #e1e1e1;	
+}
+
+ul.latest-news li {
+  list-style-type: None;	
+}
+
+div#centre-content ul.latest-news li p {
+  margin-top: -5px;	
+}
+
+span.grey {
+  color: #666;	
+}
+
+</style>
+{% endblock %}
+
+{% block content %}
+
+<h2>Latest News</h2>
+
+
+	<ul class="latest-news">
+	{% for item in news %}
+		<li>
+			<h3><a href="{% url news_item item.slug %}">{{ item.title }}</a></h3>
+			<p><span class="grey">{{ item.date_published|date:"d M Y" }}</span> - {{ item.description }}</p>
+		</li>
+	{% endfor %}
+	</ul>
+
+
+		
+
+
+{% endblock %}

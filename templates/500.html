@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+
+<head>
+
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+	<meta content="en-gb" http-equiv="Content-Language" />
+	<meta content="{% block metadescription %}{% endblock %}" name="description" />
+	
+	<meta name="google-site-verification" content="" />
+	
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta name="generator" content="Django - http://www.djangoproject.com" />
+	<meta name="DC.format" content="text/html" />
+	<meta name="DC.type" content="Django Site" />
+	<meta name="robots" content="ALL" />
+	<title>mastering-outdoors.com - 500 Technical Error</title>
+
+
+
+
+	    <link rel="stylesheet" href="/css/styles.css" />
+
+
+</head>
+
+
+
+<body>
+
+<div id="super">    
+  <div id="container">
+
+    	
+	<div id="header">
+	   	<div id="logo">
+	   		<a title="Mastering Outdoors" alt="the Mastering Outdoors logo" href="/">
+	   			<h1><span>Mastering Outdoors</span></h1>
+	   		</a>
+	   	</div>
+	   	
+	   	<div id="promo">
+	   	sales@mastering-outdoors.com
+	   	</div>
+	   	
+	   	<div id="top-nav">
+	   	    <ul id="nav">
+	   	    	<li>
+	   	    		<a href="/about-us/" title="About Us">About us</a>
+	   	    	</li>
+	   	        <li>
+	   	        	<a href="/our-clients/" title="Our Clients" alt="">Our clients</a>
+	   	        </li>
+	   	        <li>
+	   	        	<a href="/shipping/" title="Shipping" alt="">Shipping</a>
+	   	        </li>
+	   	        <li>
+	   	        	<a href="/oem-expertise/" title="OEM Expertise" alt="">OEM expertise</a>
+	   	        </li>
+	   	        <li>
+	   	        	<a href="factory-tour" title="Factory Tour" alt="">Factory tour</a>
+	   	        </li>
+	   	        <li>
+	   	        	<a href="/contact-us/" title="Contact Us" alt="">Contact us</a>
+	   	        </li>
+	 			</ul>
+	 			 
+		</div>
+
+    </div>
+       
+ 	<div id="content">
+
+		<div id="left-nav">
+			{% include "shop/snippets/left-nav.html" %}
+		</div>
+		
+		<div id="centre-content">
+		<h2>500 Error - Technical Problems</h2>
+		<p>Whoops! It looks like our site is having some technical issues. We'll try to fix the problems - try returning to the homepage or returning later.</p>
+		</div> 
+    
+    </div>
+  </div>
+  <br clear="all"/>
+	
+	<div id="footer">
+		<ul class="footer-links">
+		      <li>&copy; Mastering Outdoors 2011 </li>
+	          <li><a title="Terms and Conditions" href="/terms-and-conditions/"><span class="fontface">Terms and Conditions</span></a> </li>
+	          <li><a title="Read about the Min River Tea Farm" href="/about/"><span class="fontface">About Us</span></a></li>
+	          <li><a title="Read our Privacy Policy" href="/privacy/"><span class="fontface">Privacy</span></a></li>
+	          <li><a href="{% url contact_us %}">Contact Us</a></li>
+	          
+	   </ul>
+	</div>
+
+</div>
+	{% block extrajs %}{% endblock %}
+
+</body>
+
+</html>

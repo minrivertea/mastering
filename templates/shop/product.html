@@ -1,0 +1,108 @@
+{% extends "base.html" %}
+{% load thumbnail %}
+{% load django_static %}
+
+{% block metadescription %}{{ product.meta_description }}{% endblock %}
+
+{% block pagetitle %}{% if product.meta_title %}{{ product.meta_title }}{% else %}{{ product.title }}{% endif %}{% endblock %}
+
+{% block extracss %}
+<link rel="stylesheet" href="{% slimfile '/css/lightbox.css' %}" type="text/css" media="screen" />
+
+<style type="text/css">
+
+div#centre-content div#product-images img  {
+  float: left;
+  text-align: left;
+  margin-left: 0;
+  margin-right: 10px;
+  margin-bottom: 0px;
+}
+
+div#centre-content p.small {
+  font-size: 11px;
+  color: #999;
+  margin: 0;	
+}
+
+div#product-images {
+  float: left;
+  width: 280px;	
+}
+
+</style>
+{% endblock %}
+
+{% block extrajs %}
+<script type="text/javascript" src="{% staticfile '/js/prototype.js' %}"></script>
+<script type="text/javascript" src="/js/scriptaculous.js?load=effects,builder"></script>
+<script type="text/javascript" src="{% staticfile '/js/lightbox.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+
+<h2><span>Product &raquo;</span> {{ product.name }}</h2> 
+	
+	{% thumbnail product.image "400x400" crop="center" as im %}
+		<img alt="a picture of {{ product.name }}" title="{{ product.meta_description }}" class="product-promo" src="{{ im.url }}"/>
+	{% endthumbnail %}
+
+	
+	{{ product.description|safe }}
+	
+	<div id="product-images">
+	{% if product.image_2 %}
+	{% thumbnail product.image_2 "550x550" as im %}
+				<a href="{{ im.url }}" rel="lightbox[product]" title="{{ product.image_2_caption }}">
+	{% endthumbnail %}
+	{% thumbnail product.image_2 "60x60" crop="center" as im %}
+		<img alt="a picture of {{ product.name }}" title="Click to find out more about {{ product.name }}" class="product-promo" src="{{ im.url }}"/>
+	{% endthumbnail %}
+	</a>
+	{% endif %}
+	
+	{% if product.image_3 %}
+	{% thumbnail product.image_3 "550x550" as im %}
+				<a href="{{ im.url }}" rel="lightbox[product]" title="{{ product.image_3_caption }}">
+	{% endthumbnail %}
+		{% thumbnail product.image_3 "60x60" crop="center" as im %}
+		<img alt="a picture of {{ product.name }}" title="Click to find out more about {{ product.name }}" class="product-promo" src="{{ im.url }}"/>
+	{% endthumbnail %}
+	</a>
+	{% endif %}
+	
+	{% if product.image_4 %}
+	{% thumbnail product.image_4 "550x550" as im %}
+				<a href="{{ im.url }}" rel="lightbox[product]" title="{{ product.image_4_caption }}">
+	{% endthumbnail %}
+		{% thumbnail product.image_4 "60x60" crop="center" as im %}
+		<img alt="a picture of {{ product.name }}" title="Click to find out more about {{ product.name }}" class="product-promo" src="{{ im.url }}"/>
+	{% endthumbnail %}
+	</a>
+	{% endif %}
+	
+	{% if product.image_5 %}
+	{% thumbnail product.image_5 "550x550" as im %}
+				<a href="{{ im.url }}" rel="lightbox[product]" title="{{ product.image_5_caption }}">
+	{% endthumbnail %}
+		{% thumbnail product.image_5 "60x60" crop="center" as im %}
+		<img alt="a picture of {{ product.name }}" title="Click to find out more about {{ product.name }}" class="product-promo" src="{{ im.url }}"/>
+	{% endthumbnail %}
+	</a>
+	{% endif %}
+	</div>
+	
+	{% if product.image_2 %}
+	<p class="small">Click an image to enlarge</p>
+	{% endif %}
+
+
+	
+	<br clear="all"/>
+	{% if product.body_text %}
+	<p>{{ product.body_text|safe }}</p>
+	{% endif %}
+	
+
+
+{% endblock %}

@@ -1,0 +1,6 @@
+*.pyc
+*.DS_Store
+local_settings.py
+static/images/product-photos/
+static/cache/
+TODOLIST
