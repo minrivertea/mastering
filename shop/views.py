@@ -8,6 +8,7 @@ from django.http import HttpResponseRedirect
 from django.template.loader import render_to_string
 from django.core.mail import send_mail
 from django.contrib.auth.decorators import login_required
+from django.core.urlresolvers import reverse
 
 from PIL import Image
 from cStringIO import StringIO
