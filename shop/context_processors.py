@@ -1,6 +1,6 @@
 from django.conf import settings
 from mastering.shop.models import *
-
+from mastering.shop.views import GetCountry
 
 
 def common(request):
@@ -11,6 +11,11 @@ def common(request):
     except:
         pass
     context['ga_is_on'] = settings.GA_IS_ON
+    countrycode = GetCountry(request)['countryCode']
+    if countrycode == "US":
+       howdy = True
+    if countrycode == "IN":
+       india = True
     return context
 
 

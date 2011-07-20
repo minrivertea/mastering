@@ -10,6 +10,10 @@ from django.core.mail import send_mail
 from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
 
+import urllib
+import urllib2
+import xml.etree.ElementTree as etree
+
 from PIL import Image
 from cStringIO import StringIO
 import os, md5
@@ -28,12 +32,31 @@ def render(request, template, context_dict=None, **kwargs):
                               **kwargs
     )
 
+import json, socket
+
+def GetCountry(request):
+    # this is coming from http://ipinfodb.com JSON api
+    # the variables
+    apikey = settings.IPINFO_APIKEY 
+    ip = request.META.get('REMOTE_ADDR')
+    baseurl = "http://api.ipinfodb.com/v3/ip-country/?key=%s&ip=%s&format=json" % (apikey, ip)
+    urlobj = urllib2.urlopen(baseurl)
+    
+    # get the data
+    url = baseurl + "?" + apikey + "?"
+    data = urlobj.read()
+    urlobj.close()
+    datadict = json.loads(data)
+    return datadict
+
 
 # the homepage view
 def index(request):
     # load variables       
     products = Product.objects.filter(is_active=True, featured=True)
     reviews = Testimonial.objects.all().order_by('?')[:1]
+    country = GetCountry(request)
+    print GetCountry(request)['ipAddress']
     return render(request, "shop/home.html", locals())
     
 

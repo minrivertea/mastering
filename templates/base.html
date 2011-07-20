@@ -66,7 +66,8 @@
 
 
 <body>
-
+{% if india %}
+{% else %}
 <div id="super">    
   <div id="container">
 	{% if user.is_superuser %}
@@ -85,8 +86,15 @@
 	   	</div>
 	   	
 	   	<div id="promo">
-	   	<span>Get a free quote now</span><br/>
-	   	<a title="Contact Us by email today!" href="mailto:sales@mastering-outdoors.com">sales@mastering-outdoors.com</a>
+	   		{% if howdy %}
+	   			<span>Need help? Call us now!</span><br/>
+				1800-931-9826
+	   		{% else %}
+	   			<span>Get a free quote now</span><br/>
+	   			<a title="Contact Us by email today!" href="mailto:sales@mastering-outdoors.com">sales@mastering-outdoors.com</a>	   		
+	   		{% endif %}
+
+
 	   	</div>
 	   	
 	   	<div id="top-nav">
@@ -121,7 +129,7 @@
 
 		<div id="left-nav">
 			{% include "shop/snippets/left-nav.html" %}
-			<img style="float: left;margin-left: 10px; margin-top: 20px;" src="{% staticfile '/images/asi-logo.jpg' %}">
+			<img style="float: left;margin-left: 10px; margin: 20px 0 20px 30px;" src="{% staticfile '/images/asi-logo.jpg' %}">
 			
 			<div id="fb-root"></div><script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><fb:like-box href="http://www.facebook.com/pages/Mastering-Outdoors/176938162369158" width="240" show_faces="false" border_color="" stream="false" header="true"></fb:like-box>
 			
@@ -138,6 +146,7 @@
 </div>
 	{% block extrajs %}{% endblock %}
 
+{% endif %}
 </body>
 
 </html>
