@@ -56,8 +56,6 @@ def index(request):
     # load variables       
     products = Product.objects.filter(is_active=True, featured=True)
     reviews = Testimonial.objects.all().order_by('?')[:1]
-    country = GetCountry(request)
-    print GetCountry(request)['ipAddress']
     return render(request, "shop/home.html", locals())
     
 
