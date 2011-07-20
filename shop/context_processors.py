@@ -13,9 +13,9 @@ def common(request):
     context['ga_is_on'] = settings.GA_IS_ON
     countrycode = GetCountry(request)['countryCode']
     if countrycode == "US":
-       howdy = True
+       context['howdy'] = True
     if countrycode == "IN":
-       india = True
+       context['india'] = True
     return context
 
 
