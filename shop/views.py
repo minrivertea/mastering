@@ -9,6 +9,7 @@ from django.template.loader import render_to_string
 from django.core.mail import send_mail
 from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
+from django.utils import simplejson
 
 import urllib
 import urllib2
@@ -19,6 +20,7 @@ from cStringIO import StringIO
 import os, md5
 import datetime
 import uuid
+
 
 from mastering.shop.models import *
 from mastering.shop.forms import *
@@ -32,7 +34,6 @@ def render(request, template, context_dict=None, **kwargs):
                               **kwargs
     )
 
-import json, socket
 
 def GetCountry(request):
     # this is coming from http://ipinfodb.com JSON api
@@ -46,7 +47,7 @@ def GetCountry(request):
     url = baseurl + "?" + apikey + "?"
     data = urlobj.read()
     urlobj.close()
-    datadict = json.loads(data)
+    datadict = simplejson.loads(data)
     return datadict
 
 
