@@ -66,8 +66,7 @@
 
 
 <body>
-{% if india %}
-{% else %}
+
 <div id="super">    
   <div id="container">
 	{% if user.is_superuser %}
@@ -86,19 +85,8 @@
 	   	</div>
 	   	
 	   	<div id="promo">
-	   		{% if howdy %}
-	   			<span>Need help? Call us now!</span><br/>
-				1800-931-9826
-	   		{% else %}
 	   			<span>Get a free quote now</span><br/>
-	   			<a title="Contact Us by email today!" href="mailto:sales@mastering-outdoors.com">sales@mastering-outdoors.com</a>	   		
-	   		{% endif %}
-
-	   		
-	   		
-
-
-	   	</div>
+	   			<a title="Contact Us by email today!" href="mailto:sales@mastering-outdoors.com">sales@mastering-outdoors.com</a>	   			   		</div>
 	   	
 	   	<div id="top-nav">
 	   	    <ul id="nav">
@@ -149,7 +137,7 @@
 </div>
 	{% block extrajs %}{% endblock %}
 
-{% endif %}
+
 </body>
 
 </html>

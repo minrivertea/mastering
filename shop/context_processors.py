@@ -11,11 +11,11 @@ def common(request):
     except:
         pass
     context['ga_is_on'] = settings.GA_IS_ON
-    countrycode = GetCountry(request)['countryCode']
-    if countrycode == "US":
-       context['howdy'] = True
-    if countrycode == "IN":
-       context['india'] = True
+#    countrycode = GetCountry(request)['countryCode']
+#    if countrycode == "US":
+#       context['howdy'] = True
+#    if countrycode == "IN":
+#       context['india'] = True
     return context
 
 
