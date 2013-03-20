@@ -108,8 +108,8 @@ DJANGO_STATIC_MEDIA_URL = 'http://static.mastering-outdoors.com'
 
 # DJANGO-CAPTCHA
 # -----------------------------------------------
-CAPTCHA_FONT_SIZE = 35
-CAPTCHA_LETTER_ROTATION = None
+#CAPTCHA_FONT_SIZE = 35
+#CAPTCHA_LETTER_ROTATION = None
 
 # mail settings
 EMAIL_HOST = ''
