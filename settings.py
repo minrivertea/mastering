@@ -93,6 +93,7 @@ INSTALLED_APPS = (
     'sorl.thumbnail',
     'django_static', 
     'tinymce',  
+    'captcha',
 )
 
 # Random app information for different things
@@ -104,6 +105,11 @@ DJANGO_STATIC = True
 DJANGO_STATIC_SAVE_PREFIX = '/tmp/cache-forever'
 DJANGO_STATIC_NAME_PREFIX = '/cache-forever'
 DJANGO_STATIC_MEDIA_URL = 'http://static.mastering-outdoors.com'
+
+# DJANGO-CAPTCHA
+# -----------------------------------------------
+CAPTCHA_FONT_SIZE = 35
+CAPTCHA_LETTER_ROTATION = None
 
 # mail settings
 EMAIL_HOST = ''

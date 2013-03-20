@@ -1,6 +1,8 @@
 from django import forms
 from django.forms import ModelForm
 from tinymce.widgets import TinyMCE
+from captcha.fields import CaptchaField
+
 
 from mastering.shop.models import *
 
@@ -11,6 +13,7 @@ class ContactForm(forms.Form):
     your_message = forms.CharField(widget=forms.Textarea, required=False)
     country = forms.CharField(required=False)
     phone_number = forms.CharField(required=False)
+    captcha = CaptchaField()
 
 
 class CreateProductsForm(forms.Form):
